@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace; 
+
+int main() {
+    double x1 = 0.0;
+    double x2 = 0.0;
+    double y1 = 0.0;
+    double y2 = 0.0; 
+    double distance = 0.0;
+    
+    cout << "Please enter the first x-coordinate: " << endl; 
+    cin >> x1;
+    cout << endl;
+    cout << "Please enter the first y-coordinate: " << endl;
+    cin >> y1; 
+    cout << endl; 
+    cout << "Please enter the second x-coordinate: " << endl;
+    cin >> x2;
+    cout << endl;
+    cout << "Please enter the second y-coordinate: " << endl;
+    cin >> y2; 
+    cout << endl;
+    
+    distance = sqrt(pow((x2-x1),2) + pow(y2-y1),2));
+    cout << distance;
+
+    return 0;
+
+}
