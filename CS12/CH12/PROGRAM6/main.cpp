@@ -2,7 +2,8 @@
 #include <cmath>
 
 using namespace std;
-//Segementation Fault Errors on: (200, -2, 4) and (5, -29, 6)
+//Edit 01: Segementation Fault Errors on: (200, -2, 4) and (5, -29, 6)
+//Edit 02: Fixed, forgot about negative numbers. Corrected it by importing cmath library and using absolute value function.
 
 /* Returns true if a solution was found and false if there is no solution.
    x and y will contain a solution if a solution was found. 
