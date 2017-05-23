@@ -1,0 +1,3 @@
+mkdir ben
+slots
+pause

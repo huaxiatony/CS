@@ -1,0 +1,2 @@
+appletviewer TouchWindow.html
+pause

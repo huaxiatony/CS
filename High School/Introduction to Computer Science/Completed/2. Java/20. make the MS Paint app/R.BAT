@@ -1,0 +1,2 @@
+appletviewer FirstApplet.html
+pause

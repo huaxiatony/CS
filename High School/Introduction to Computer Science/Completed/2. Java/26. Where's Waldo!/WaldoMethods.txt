@@ -1,0 +1,18 @@
+v2.0 - 3/21/05 - added getX(), getY(), moveTo(), getColor(), setColor()
+
+
+Waldo( x, y, canvas )               defaults not hidden
+Waldo( point, canvas )              defaults not hidden 
+Waldo( x, y, bHidden, canvas )
+Waldo( point, bHidden, canvas )
+
+getX()
+getY()
+move()
+moveTo( x, y )
+moveTo( point )
+getColor()
+setColor( newColor )
+hide()
+show()
+contains()
