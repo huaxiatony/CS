@@ -1,0 +1,44 @@
+// First list done with push_fronts: 19
+// 2nd list done w/ push_fronts: 28
+// 2nd list = 1st list: 34
+// pair of push_front's called: 44 
+// pair of push_back's called: 56
+
+/*
+first_list:
+head = 0x613ca0
+head->value = 5
+head->next->value = 4
+
+second_list:
+head = 0x613d40
+head->value = 6
+head->next->value = 7
+
+line: 36
+first_list head = 0x613ca0
+second_list head = 0x613ca0
+first_list head->value = 5
+second_list head->value = 5
+first_list head->next = 0x613c80
+second_list head->next = 0x613c80
+first_list head->next->value = 4
+second_list head->next->value = 4
+
+line: 46
+first_list head = 0x613d60
+first_list head->value = 100
+first_list head->next = 0x613ca0
+second_list head = 0x613d80
+second_list head->vaue = 200
+second_list head->next->value = 5
+
+line: 56
+first_list head = 0x613d60
+first_list head->value = 100
+first_list head->next->value = 5
+second_list head = 0x613d80
+second_list head->value = 200
+second_list head->next->value = 5
+
+

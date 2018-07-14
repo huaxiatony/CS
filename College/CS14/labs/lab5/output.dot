@@ -1,0 +1,11 @@
+digraph G {
+
+	b [color = gray, peripheries=2, style = filled, label="key=6, pos=1"];
+	c [color = gray, peripheries=2, style = filled, label="key=2, pos=2"];
+	a [color = gray, peripheries=2, style = filled, label="key=4, pos=3"];
+
+
+	a -> b;
+	a -> c;
+
+}
