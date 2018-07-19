@@ -96,8 +96,8 @@ public:
       delete t;
     }
   }
-  void insert(int v) { root = BinaryNode::insert(v, root); }
-  void remove(int v) { root = BinaryNode::remove(v, root); }
+   void insert(int v) { if(search(root,v)){ cout << "Error. Can't insert same thing. \n"; return; }root = BinaryNode::insert(v, root); }
+  void remove(int v) { if(!search(root,v)){ cout << "Error! Can't remove nonexistences.\n"; return; }root = BinaryNode::remove(v, root); }
   void display() { display(root); }
   void display( BinaryNode* t ) {
     // in-order traversal with indented display.
@@ -204,23 +204,25 @@ public:
     static char a = 'a';
     ++pre;
     ofs << "\t" << t->id << " [color = orange, peripheries=2, style = filled, label=\"key=" << t->value << ", pre=" << pre << "\"];" << endl;
-    if(t->right){
-      ++a;
-      t->right->id = a;
-      mode_pre( ofs , t->right );
-    }
     if(t->left){
       ++a;
       t->left->id = a;
       mode_pre( ofs , t->left );
     }
+    if(t->right){
+      ++a;
+      t->right->id = a;
+      mode_pre( ofs , t->right );
+    }
+
   }
   void mode_pre_2( ofstream &ofs , BinaryNode* t ){
     //   a -> b [color=blue];
-    if(t->right)
-      ofs << "\t" << t->id << " -> " << t->right->id << " [color=blue];" << endl;
     if(t->left)
       ofs << "\t" << t->id << " -> " << t->left->id << " [color=blue];" << endl;
+    if(t->right)
+      ofs << "\t" << t->id << " -> " << t->right->id << " [color=blue];" << endl;
+
     if(t->right) mode_pre_2( ofs , t->right );
     if(t->left) mode_pre_2( ofs , t->left);
   }
@@ -243,6 +245,12 @@ public:
     //  a [color = red, peripheries=2, style = filled, label="key=4, in=4"];
     static int in = 0;
     static char a = 'a';
+
+    if(t->left){
+      ++a;
+      t->left->id = a;
+      mode_in( ofs , t->left );
+    }
     ++in;
     ofs << "\t" << t->id << " [color = red, peripheries=2, style = filled, label=\"key=" << t->value << ", in=" << in << "\"];" << endl;
     if(t->right){
@@ -250,19 +258,17 @@ public:
       t->right->id = a;
       mode_in( ofs , t->right );
     }
-    if(t->left){
-      ++a;
-      t->left->id = a;
-      mode_in( ofs , t->left );
-    }
+    
   }
   void mode_in_2(ofstream &ofs , BinaryNode* t){
-    if(t->right)
-      ofs << "\t" << t->id << " -> " << t->right->id << ";\n";
     if(t->left)
       ofs << "\t" << t->id << " -> " << t->left->id << ";\n";
-    if(t->right) mode_in_2( ofs , t->right );
+    if(t->right)
+      ofs << "\t" << t->id << " -> " << t->right->id << ";\n";
+
     if(t->left) mode_in_2( ofs , t->left );
+    if(t->right) mode_in_2( ofs , t->right );
+
   }
   
   void mode_post(){
@@ -282,27 +288,34 @@ public:
   void mode_post( ofstream &ofs , BinaryNode* t){
     static int pos = 0;
     static char a = 'a';
-    if(t->right){
-      ++a;
-      t->right->id = a;
-      mode_post( ofs , t->right );
-    }
     if(t->left){
       ++a;
       t->left->id = a;
       mode_post( ofs , t->left );
     }
+    if(t->right){
+      ++a;
+      t->right->id = a;
+      mode_post( ofs , t->right );
+    }
     ++pos;
     ofs << "\t" << t->id << " [color = gray, peripheries=2, style = filled, label=\"key=" << t->value << ", pos=" << pos << "\"];" << endl;
   }
   void mode_post_2( ofstream &ofs , BinaryNode* t){
-    if(t->right)
-      ofs << "\t" << t->id << " -> " << t->right->id << ";\n";
     if(t->left)
       ofs << "\t" << t->id << " -> " << t->left->id << ";\n";
+    if(t->right)
+      ofs << "\t" << t->id << " -> " << t->right->id << ";\n";
+
     if(t->right) mode_post_2( ofs , t->right );
     if(t->left) mode_post_2( ofs , t->left );
   }
+  
+  bool search( BinaryNode* root,  int str){
+    if(root == NULL || root->value == str) return root;
+    if(root->value < str) return search(root->right , str);
+    return search(root->left , str);
+}
   
   
   

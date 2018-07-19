@@ -87,8 +87,8 @@ private:
 public:
   BST(): root(NULL) {}
   ~BST() {}
-  void insert(int v) { root = BinaryNode::insert(v, root); }
-  void remove(int v) { root = BinaryNode::remove(v, root); }
+  void insert(int v) { if(search(v)){ cout << "Error.\n"; return; }root = BinaryNode::insert(v, root); }
+  void remove(int v) { if(!search(v)){ cout << "Error!\n"; return; }root = BinaryNode::remove(v, root); }
   void display() { display(root); }
   void display( BinaryNode* t ) {
     // in-order traversal with indented display.
@@ -123,6 +123,23 @@ public:
     if(t->right) dotty(ofs, t->right);
     if(t->left) dotty(ofs, t->left);
   }
+  
+  bool search( int str){
+    BinaryNode* t = root;
+    bool found = false;
+    if(root == NULL) return false;
+    else if(root->value == str) return true;
+    else if(str <= root->value){
+        root = root->left;
+        found = search( str);
+    } else {
+        root = root->right;
+        found = search( str );
+    }
+    root = t;
+    return found;
+}
+  
 private:
   BinaryNode* root;
 };

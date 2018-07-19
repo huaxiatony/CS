@@ -1,8 +1,8 @@
 digraph G {
 
-	b [color = gray, peripheries=2, style = filled, label="key=6, pos=1"];
-	c [color = gray, peripheries=2, style = filled, label="key=2, pos=2"];
-	a [color = gray, peripheries=2, style = filled, label="key=4, pos=3"];
+	b [color = red, peripheries=2, style = filled, label="key=-1, in=1"];
+	a [color = red, peripheries=2, style = filled, label="key=1, in=2"];
+	c [color = red, peripheries=2, style = filled, label="key=2, in=3"];
 
 
 	a -> b;
